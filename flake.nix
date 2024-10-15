@@ -7,7 +7,7 @@
   outputs = { self }:
   {
     templates = {
-      DevShell= { 
+      default = { 
         path = ./DevShell;
         description = "A plain Development Shell";
       };
