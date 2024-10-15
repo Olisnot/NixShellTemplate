@@ -11,11 +11,12 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages."${system}";
       nvim = nixvimConfig.packages."${system}".default.extend {
+        plugins.lsp.servers.pylyzer.enable = true;
       };
     in
     {
       devShells."${system}".default = pkgs.mkShell {
-        packages = with pkgs; []; 
+        packages = with pkgs; [ python3 ]; 
 
         buildInputs = [ nvim ];
 
