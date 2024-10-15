@@ -14,13 +14,15 @@
     };
   in
   {
-    devShells."${system}".default = pkgs.mkShell {
-      packages = with pkgs; [ ];
+    templates = {
+      devShells."${system}".default = pkgs.mkShell {
+        packages = with pkgs; [ ];
 
-      buildInputs = [ nvim ];
+        buildInputs = [ nvim ];
 
-      shellHook = ''
-      '';
+        shellHook = ''
+        '';
+      };
     };
   };
 
