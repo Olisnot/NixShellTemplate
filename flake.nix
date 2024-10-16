@@ -23,6 +23,10 @@
         path = ./python;
         description = "Python development shell";
       };
+      latex = {
+        path = ./latex;
+        description = "Latex Shell";
+      };
     };
   };
 
