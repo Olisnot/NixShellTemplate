@@ -23,6 +23,14 @@
         path = ./python;
         description = "Python development shell";
       };
+      go = {
+        path = ./go;
+        description = "Go development shell";
+      };
+      rust = {
+        path = ./rust;
+        description = "Rust development shell";
+      };
       latex = {
         path = ./latex;
         description = "Latex Shell";
