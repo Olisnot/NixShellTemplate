@@ -35,6 +35,10 @@
         path = ./latex;
         description = "Latex Shell";
       };
+      obsidian = {
+        path = ./obsidian;
+        description = "Obsidian Shell";
+      };
     };
   };
 
