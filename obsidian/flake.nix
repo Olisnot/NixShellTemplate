@@ -11,14 +11,23 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages."${system}";
       nvim = nixvimConfig.packages."${system}".default.extend {
-        plugins.obsidian.enable = true;
+        plugins.obsidian = {
+          enable = true;
+          settings = {
+            workspaces = [ {
+              name = "Vault";
+              path = ".";
+            }];
+            templates.subdir = "./Templates";
+          };
+        };
       };
     in
     {
       devShells."${system}".default = pkgs.mkShell {
         buildInputs = [ nvim ];
 
-        shellHook = /* bash */''
+        shellHook = /* bash */ ''
         echo Obsidian Vault Shell
         '';
       };

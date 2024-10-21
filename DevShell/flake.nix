@@ -19,7 +19,7 @@
 
         buildInputs = [ nvim ];
 
-        shellHook = ''
+        shellHook = /* bash */ ''
         '';
       };
     };

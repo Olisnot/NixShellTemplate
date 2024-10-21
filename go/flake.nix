@@ -21,7 +21,7 @@
       devShells."${system}".default = pkgs.mkShell {
         packages = with pkgs; [ go ]; 
 
-        buildInputs = [ nvim ];
+        buildInputs = /* bash */ [ nvim ];
 
         shellHook = ''
         '';

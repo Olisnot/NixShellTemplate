@@ -18,7 +18,7 @@
       devShells."${system}".default = pkgs.mkShell {
         packages = with pkgs; [ rustup cargo ]; 
 
-        buildInputs = [ nvim ];
+        buildInputs = /* bash */ [ nvim ];
 
         shellHook = ''
         '';

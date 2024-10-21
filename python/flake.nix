@@ -18,7 +18,7 @@
       devShells."${system}".default = pkgs.mkShell {
         packages = with pkgs; [ python3 ]; 
 
-        buildInputs = [ nvim ];
+        buildInputs = /* bash */ [ nvim ];
 
         shellHook = ''
         '';
