@@ -19,7 +19,7 @@
     in
     {
       devShells."${system}".default = pkgs.mkShell {
-        packages = with pkgs; [ tectonic ]; 
+        packages = with pkgs; [ tectonic texlivePackages.texcount ]; 
 
         buildInputs = [ nvim ];
 
