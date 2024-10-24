@@ -7,37 +7,45 @@
   };
 
   outputs = { self, nixpkgs, nixvimConfig }: 
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages."${system}";
-      nvim = nixvimConfig.packages."${system}".default.extend {
-        keymaps = [
-          {
-            action = "<cmd>VimtexView<CR>";
-            key = "<leader>vw";
-            mode = [ "n" ];
-          }
-        ];
-        plugins = {
-          vimtex = {
-            enable = true;
-            settings = {
-              compiler_method = "tectonic";
-              view_general_viewer = "hyprctl dispatch exec \"[workspace 1; fullscreen]\" mupdf";
-            };
+  let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages."${system}";
+    nvim = nixvimConfig.packages."${system}".default.extend {
+      keymaps = [
+        {
+          action = "<cmd>TeXpresso %<CR>";
+          key = "<leader>vw";
+          mode = [ "n" ];
+        }
+        {
+          action = "<cmd>VimtexCompileSS<CR>";
+          key = "<leader>c";
+          mode = [ "n" ];
+        }
+      ];
+      plugins = {
+        texpresso.enable = true;
+        vimtex = {
+          enable = true;
+          settings = {
+            compiler_method = "tectonic";
+            view_general_viewer = "";
           };
-          lsp.servers.ltex.enable = true;
         };
-      };
-    in
-    {
-      devShells."${system}".default = pkgs.mkShell {
-        packages = with pkgs; [ tectonic texlivePackages.texcount ]; 
 
-        buildInputs = [ nvim ];
-
-        shellHook = /* bash */ ''
-        '';
+        lsp.servers.ltex.enable = true;
       };
+
     };
-  }
+  in
+  {
+    devShells."${system}".default = pkgs.mkShell {
+      packages = with pkgs; [ tectonic texlivePackages.texcount texpresso ]; 
+
+      buildInputs = [ nvim ];
+
+      shellHook = /* bash */ ''
+      '';
+    };
+  };
+}
