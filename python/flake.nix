@@ -11,7 +11,10 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages."${system}";
       nvim = nixvimConfig.packages."${system}".default.extend {
-        plugins.lsp.servers.pylsp.enable = true;
+        plugins.lsp.servers.pylsp = {
+          enable = true;
+          settings.configurationSources = "flake8";
+        };
       };
     in
     {
