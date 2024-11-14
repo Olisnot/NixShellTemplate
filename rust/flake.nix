@@ -11,14 +11,17 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages."${system}";
       nvim = nixvimConfig.packages."${system}".default.extend {
-        plugins.lsp.servers.rust_analyzer.enable = true;
+        plugins.lsp.servers.rust_analyzer = {
+          enable = true;
+          installRustc = false;
+        };
       };
     in
     {
       devShells."${system}".default = pkgs.mkShell {
-        packages = with pkgs; [ rustup cargo ]; 
-
         buildInputs = /* bash */ [ nvim ];
+        nativeBuildInputs = with pkgs; [ rustc cargo gcc rustfmt clippy ];
+        RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
 
         shellHook = ''
         '';
