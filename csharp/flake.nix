@@ -21,6 +21,7 @@
         buildInputs = [ nvim ];
 
         shellHook = /* bash */ ''
+        export SHELL=/run/current-system/sw/bin/bash
         '';
         DOTNET_CLI_TELEMETRY_OPTOUT = "1";
       };

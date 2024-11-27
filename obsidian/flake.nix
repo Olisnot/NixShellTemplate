@@ -28,6 +28,7 @@
         buildInputs = [ nvim ];
 
         shellHook = /* bash */ ''
+        export SHELL=/run/current-system/sw/bin/bash
         echo Obsidian Vault Shell
         '';
       };
