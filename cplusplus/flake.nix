@@ -1,5 +1,5 @@
 {
-  description = "C and C++ Development Shell";
+  description = "C++ Development Shell";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -16,7 +16,7 @@
     in
     {
       devShells."${system}".default = pkgs.mkShell {
-        packages = with pkgs; [ gcc ]; 
+        packages = with pkgs; [ gcc cmake ]; 
 
         buildInputs = [ nvim ];
 

@@ -15,9 +15,13 @@
         path = ./csharp;
         description = "C# development shell";
       };
-      c-cplusplus = {
-        path = ./c-cplusplus;
-        description = "C and C++ development shell";
+      c = {
+        path = ./c;
+        description = "C development shell";
+      };
+      cplusplus = {
+        path = ./cplusplus;
+        description = "C++ development shell";
       };
       python = {
         path = ./python;
