@@ -19,9 +19,9 @@
     in
     {
       devShells."${system}".default = pkgs.mkShell {
-        packages = with pkgs; [ python3 ]; 
+        packages = with pkgs.python312Packages; [ ]; 
 
-        buildInputs = /* bash */ [ nvim ];
+        buildInputs = /* bash */ [ nvim pkgs.python3 ];
 
         shellHook = ''
         export SHELL=/run/current-system/sw/bin/bash
