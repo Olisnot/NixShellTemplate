@@ -1,5 +1,5 @@
 {
-  description = "Obsidian Shell";
+  description = "Zig Development Shell";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -11,25 +11,17 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages."${system}";
       nvim = nixvimConfig.packages."${system}".default.extend {
-        plugins.obsidian = {
-          enable = true;
-          settings = {
-            workspaces = [ {
-              name = "Vault";
-              path = ".";
-            }];
-            templates.subdir = "./Templates";
-          };
-        };
+        plugins.lsp.servers.zls.enable = true;
       };
     in
     {
       devShells."${system}".default = pkgs.mkShell {
-        buildInputs = [ nvim ];
+        packages = with pkgs; []; 
+
+        buildInputs = [ nvim pkgs.zig];
 
         shellHook = /* bash */ ''
         export SHELL=/run/current-system/sw/bin/bash
-        echo Obsidian Vault Shell
         '';
       };
     };
