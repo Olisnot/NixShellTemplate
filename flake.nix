@@ -3,7 +3,7 @@
 
   inputs = { };
 
-  outputs = { }:
+  outputs = { self }:
   {
     templates = {
       default = { 
